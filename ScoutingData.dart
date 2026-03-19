@@ -1,6 +1,6 @@
 class MatchScout {
   int teamNumber;
-  int autoPiece
+  int autoPiece;
   int teleopPieces;
   bool climbed;
   String comments;
@@ -15,18 +15,17 @@ class MatchScout {
 
   // This function turns the data into a "Compressed String" for the QR Code
   String toQrString() {
-    return "$teamNumber|$autoPieces|$teleopPieces|${climbed ? 1 : 0}|$commernts";
+    return "$teamNumber|$autoPiece|$teleopPieces|${climbed ? 1 : 0}|$comments";
   }
 }
 void main () {
   //testing the logic
   var testMatch = MatchScout(
-    team number: 2080,
-    autoPieces: 3,
+    teamNumber: 2080,
+    autoPiece: 3,
     teleopPieces: 12,
     climbed: true,
     comments: "Fast cycles",
     );
-  print("QR Data to scan: $ {testMatch.toQrString()}");
+  print("QR Data to scan: \\${testMatch.toQrString()}");
 }
-
