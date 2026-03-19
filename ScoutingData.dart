@@ -29,3 +29,4 @@ void main () {
     );
   print("QR Data to scan: $ {testMatch.toQrString()}");
 }
+
