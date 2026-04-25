@@ -1,3 +1,4 @@
+//its lowkey been a while but I promise I was making code for this project here and there, just forgot to update it on my github acc, I fixed the import for the qr code error and made it automatically generate the qr code, now I am working on to add more questions in 
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -39,13 +40,14 @@ class _ScouterAppState extends State<ScouterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Team 2080 Scouter"), backgroundColor: Colors.blueGrey),
+      appBar: AppBar(title: const Text("Team 2080 Scouter"), backgroundColor: const Color.fromARGB(255, 105, 63, 202)),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           
             children: [
               ListTile(
+              
   title: const Text("Alliance Partner Vibe Check"),
   trailing: DropdownButton<String>(
     value: scoutingData["vibeCheck"],
@@ -108,21 +110,28 @@ class _ScouterAppState extends State<ScouterApp> {
       children: [
         TextField(
           onChanged: (val) => scoutingData["funQuestion"] = val,
-          decoration: const InputDecoration(labelText: "If this bot was a snack, what would it be?"),
+          decoration: const InputDecoration(labelText: "If this bot was a snack/animal, what would it be?"),
         ),
       ],
     ),
-    
+    QrImageView(
+            data: scoutingData.toString(),
+            version: QrVersions.auto,
+            size: 200.0,
+            backgroundColor: Colors.white,
+          ),
+          
     const SizedBox(height: 20),
     ElevatedButton(
       onPressed: () {
-        // This turns the WHOLE cabinet into one long string for the QR code
-        String qrString = scoutingData.values.join("|");
-        print("Final Data: $qrString");
-      },
-      child: const Text("GENERATE QR CODE"),
+        QrImageView(
+        data: 'Team 2080 Rocks!',
+        version: QrVersions.auto,
+        size: 200.0,
+    );},
+      child: const Text("Generate QR Code"),
       
-   ),
+    ),
   ],
 )
 
@@ -130,9 +139,3 @@ class _ScouterAppState extends State<ScouterApp> {
     );
   }
 }
-
-
-
-
-
-
